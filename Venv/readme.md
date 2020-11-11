@@ -1,9 +1,9 @@
 # Using virtual Env in python
 
-
 ## Listing the list of libraries installed in the python by defualt 
-
+```
 C:\Users\MrMe>pip list
+
 Package              Version
 -------------------- -------
 appdirs              1.4.4
@@ -32,6 +32,8 @@ six                  1.15.0
 toml                 0.10.2
 urllib3              1.25.11
 virtualenv           20.1.0
+```
+
 
 ## Go the direcotry where you want to create the virtual env
 C:\Users\MrMe>cd Desktop
@@ -44,7 +46,7 @@ C:\Users\MrMe\Desktop>python -m venv test_project_env
 C:\Users\MrMe\Desktop>python -m venv venv --system-site-packages
 
 ## Check if the virtual env is created
-
+```
 C:\Users\MrMe\Desktop>dir
 
 Directory of C:\Users\MrMe\Desktop
@@ -54,17 +56,19 @@ Directory of C:\Users\MrMe\Desktop
                1 Dir(s)  5,037,184 bytes free
 
 
-
+```
 ## Activate the Virtual Environment
-
+```
 C:\Users\MrMe\Desktop>test_project_env\Scripts\activate.bat
 
 > (test_project_env) C:\Users\MrMe\Desktop>where python
 C:\Users\MrMe\Desktop\test_project_env\Scripts\python.exe
 D:\Programs\Python\Python38\python.exe
 C:\Users\MrMe\AppData\Local\Microsoft\WindowsApps\python.exe
-
+```
 ## Check the files in the directory
+
+```
 (test_project_env) C:\Users\MrMe\Desktop>cd test_project_env
 
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>dir
@@ -79,21 +83,23 @@ C:\Users\MrMe\AppData\Local\Microsoft\WindowsApps\python.exe
 11/11/2020  12:07 PM    <DIR>          Scripts
                1 File(s)             91 bytes
                5 Dir(s)  159,391,850,496 bytes free
-
+```
 ## List of Libraries installed in the environment (By default it's 2)
+```
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>pip list
 Package    Version
 ---------- -------
 pip        19.2.3
 setuptools 41.2.0
-
+```
 ## List the packages installed only the VirtualEnv 
+
 D:\Programs\sdk-manager\bin>pip list --local
 
 
 ## Installed the library only in the environment (test_project_env)
 > When you are in the virtual environment, packages installed here are bound only to the specific environment
-
+```
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>pip install requests
 Collecting requests
   Downloading requests-2.24.0-py2.py3-none-any.whl (61 kB)
@@ -112,8 +118,9 @@ Collecting idna<3,>=2.5
 Installing collected packages: chardet, certifi, urllib3, idna, requests
 Successfully installed certifi-2020.11.8 chardet-3.0.4 idna-2.10 requests-2.24.0 urllib3-1.25.11
 
-
+```
 ## Now if you list the library you will be the installed packages and the dependencies (test_project_env)
+```
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>pip list
 Package    Version
 ---------- ---------
@@ -124,15 +131,16 @@ pip        20.2.4
 requests   2.24.0
 setuptools 41.2.0
 urllib3    1.25.11
-
+```
 ## Create the requirements files by pip freeze and copying it to the requirements.txt
+```
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>pip freeze
 certifi==2020.11.8
 chardet==3.0.4
 idna==2.10
 requests==2.24.0
 urllib3==1.25.11
-
+```
 ## This code will create a new file for your in the current working directory
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>pip freeze > requirements.txt
 
@@ -146,6 +154,7 @@ urllib3==1.25.11
 (test_project_env) C:\Users\MrMe\Desktop\test_project_env>deactivate
 
 ## Delete the virtual environment project as a whole
+```
 C:\Users\MrMe\Desktop>rmdir test_project_env /s
 test_project_env, Are you sure (Y/N)? Y
-
+```
