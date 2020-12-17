@@ -20,7 +20,7 @@ Output: rule_group,rule_id,rule_name,rule_applied_zones,sources,destinations,por
 
 preview of the exported data
 
-![Packtoo](/img/data_preview.png)
+![Packtoo](https://raw.githubusercontent.com/mkshgh/HowToPython/main/Vsphere%20Backup%20XML2CSV/img/data_preview.png)
 
 ## Libraries
 
