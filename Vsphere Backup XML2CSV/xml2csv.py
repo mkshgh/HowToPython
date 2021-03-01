@@ -19,7 +19,7 @@ def vxml2csv(xml_locaion:str):
     
     with open(ouput_csv,"w", newline="") as csv_write:
         writer = csv.writer(csv_write)
-        writer.writerow(['rule_group','rule_id','rule_name','rule_applied_zones','sources','destinations','ports_n_services','allow_deny'])
+        writer.writerow(['rule_group','rule_id','rule_name','rule_applied_zones','sources','destinations','ports_n_services','allow_deny','rule_disabled'])
         # start the parsing process here
         for sections in root:
             for items in sections:
@@ -39,6 +39,7 @@ def vxml2csv(xml_locaion:str):
                     # if first is name then it means that the parent node is here
                     rule_group = (sections.get('name'))
                     rule_id = (items.get('id'))
+                    rule_disabled = (items.get('disabled'))
                     rule_name = (items[0].text)
                     allow_deny = (items[1].text)
                     
@@ -53,7 +54,7 @@ def vxml2csv(xml_locaion:str):
                     [ports_n_services.append(items[6][i][0].text) for i in range(len(items[6]))]
 
                     # source ips are nested in group"
-                    csv_data = [rule_group,rule_id,rule_name,rule_applied_zones,sources,destinations,ports_n_services,allow_deny]
+                    csv_data = [rule_group,rule_id,rule_name,rule_applied_zones,sources,destinations,ports_n_services,allow_deny,rule_disabled]
                     writer.writerow(csv_data)
 
 print('start') 
