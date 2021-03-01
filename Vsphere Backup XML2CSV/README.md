@@ -7,7 +7,7 @@ It uses xmlutil to traverse through the data and provides scrapes the useful dat
 ```
 
 Input: xml backup of firewall with unnecessary data
-Output: rule_group,rule_id,rule_name,rule_applied_zones,sources,destinations,ports_n_services,allow_deny
+Output: rule_group,rule_id,rule_name,rule_applied_zones,sources,destinations,ports_n_services,allow_deny,rule_disabled
 
 ```
 
