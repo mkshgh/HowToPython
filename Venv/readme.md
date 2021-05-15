@@ -43,7 +43,7 @@ C:\Users\MrMe>cd Desktop
 C:\Users\MrMe\Desktop>python -m venv test_project_env
 
 ## If you want to create the virtual env which can also use the system packages add: venv --system-site-packages
-C:\Users\MrMe\Desktop>python -m venv venv --system-site-packages
+C:\Users\MrMe\Desktop>python -m venv --system-site-packages
 
 ## Check if the virtual env is created
 ```
