@@ -47,12 +47,22 @@ def vxml2csv(xml_locaion:str):
                     # since they three level inside the root node use [][][] multidimensional list
                     # Also we don't know the exact number so we use len which gives us the count of the inner items
                     rule_applied_zones, sources, destinations, ports_n_services = [],[],[],[]
-
-                    [rule_applied_zones.append(items[2][i][0].text) for i in range(len(items[2]))]
-                    [sources.append(items[4][i][0].text) for i in range(len(items[4]))]
-                    [destinations.append(items[5][i][0].text) for i in range(len(items[5]))]
-                    [ports_n_services.append(items[6][i][0].text) for i in range(len(items[6]))]
-
+                    # Statically compare by tag name as some of them might be empty
+                    for data in items:
+                        if data.tag == 'appliedToList':
+                            [rule_applied_zones.append(data[i][0].text) for i in range(len(data))]
+                        elif data.tag == 'sources':
+                            [sources.append(data[i][0].text) for i in range(len(data))]
+                        elif data.tag == 'destinations':
+                            [destinations.append(data[i][0].text) for i in range(len(data))]
+                        elif data.tag == 'services':
+                            for services in data:
+                                #this means that the custom TCP or UDP ports are used 
+                                if services[0].text=='true':
+                                    ports_n_services.append(services[3].text+':'+services[1].text)
+                                    print(services[1].text+services[2].text+services[3].text)
+                                else:
+                                    ports_n_services.append(services[0].text)                  
                     # source ips are nested in group"
                     csv_data = [rule_group,rule_id,rule_name,rule_applied_zones,sources,destinations,ports_n_services,allow_deny,rule_disabled]
                     writer.writerow(csv_data)
@@ -60,5 +70,5 @@ def vxml2csv(xml_locaion:str):
 print('start') 
 # enter the xml file name here 
 # put the file in the same directory for now
-vxml2csv('real_data.xml')
+vxml2csv('firewall.xml')
 print('finish')
