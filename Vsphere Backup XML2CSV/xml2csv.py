@@ -48,19 +48,31 @@ def vxml2csv(xml_locaion:str):
                     # Also we don't know the exact number so we use len which gives us the count of the inner items
                     rule_applied_zones, sources, destinations, ports_n_services = [],[],[],[]
                     # Statically compare by tag name as some of them might be empty
+                    print(rule_group)
                     for data in items:
                         if data.tag == 'appliedToList':
-                            [rule_applied_zones.append(data[i][0].text) for i in range(len(data))]
+                            try:
+                                [rule_applied_zones.append(data[i][0].text) for i in range(len(data))]
+                            except:
+                                pass
                         elif data.tag == 'sources':
-                            [sources.append(data[i][0].text) for i in range(len(data))]
+                            try:
+                                [sources.append(data[i][0].text) for i in range(len(data))]
+                            except:
+                                pass
                         elif data.tag == 'destinations':
-                            [destinations.append(data[i][0].text) for i in range(len(data))]
+                            try:
+                                [destinations.append(data[i][0].text) for i in range(len(data))]
+                            except:
+                                pass
                         elif data.tag == 'services':
                             for services in data:
-                                #this means that the custom TCP or UDP ports are used 
                                 if services[0].text=='true':
-                                    ports_n_services.append(services[3].text+':'+services[1].text)
-                                    print(services[1].text+services[2].text+services[3].text)
+                                    try:
+                                        ports_n_services.append(services[3].text+':'+services[1].text)
+                                        print(services[1].text+services[2].text+services[3].text)
+                                    except:
+                                        pass
                                 else:
                                     ports_n_services.append(services[0].text)                  
                     # source ips are nested in group"
